@@ -1,0 +1,24 @@
+{
+  "name": "o.j.o-2024-back",
+  "version": "1.0.0",
+  "description": "Le projet O.J.O. 2024 est un site web axé sur l’organisation des utilisateurs pour les Jeux Olympiques et Paralympiques de 2024. Sur ce site, l’utilisateur a accès à l’ensemble des épreuves et a la possibilité de créer un programme personnalisé afin de ne manquer aucune date.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/datasource-rest": "^6.0.1",
+    "@apollo/server": "^4.7.5",
+    "@faker-js/faker": "^8.0.2",
+    "@nic-jennings/sql-datasource": "^0.0.7",
+    "bcrypt": "^5.1.0",
+    "debug": "^4.3.4",
+    "dotenv": "^16.3.1",
+    "graphql": "^16.7.1",
+    "jsonwebtoken": "^9.0.1",
+    "pg": "^8.11.1"
+  }
+}
