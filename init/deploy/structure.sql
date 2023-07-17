@@ -4,7 +4,7 @@ BEGIN;
 
 -- XXX Add DDLs here.
 
-CREATE DOMAIN slug AS TEXT
+CREATE DOMAIN "slug" AS TEXT
   CHECK(
     VALUE ~ '^[a-z]+(?:-[a-z]+)*$'
 );
@@ -82,3 +82,4 @@ CREATE TABLE "user_has_event" (
 
 
 COMMIT;
+

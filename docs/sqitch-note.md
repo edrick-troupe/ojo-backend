@@ -1,16 +1,28 @@
-#### Initialisation de sqith
+#### Initialisation of sqitch
 ```
 sqitch init ojo --engine pg --top-dir init --client psql --target db:pg:ojo
 ```
-#### Création de la structure
+#### Creation of the structure
 ```
 sqitch add structure -n 'Création du DDL'
 ```
-#### Création de la DB
+#### Creation of DB
 ```
 createdb ojo
 ```
-#### Déploiement de la structure
+#### Deploy of structure
 ```
 sqitch deploy db:pg:ojo
+```
+#### Revert script of structure
+```
+sqitch revert db:pg:ojo
+```
+#### Verify of structure ( deploy required )
+```
+sqitch verify db:pg:ojo
+```
+#### Seeding exe 
+```
+psql -d ojo -f data/seeding-sample.sql
 ```
