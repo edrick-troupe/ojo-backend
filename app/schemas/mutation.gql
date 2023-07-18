@@ -1,0 +1,11 @@
+# The mutations works like queries but are executed in series
+
+type Mutation {
+
+  # For mutations we define the action (add, update, delete),
+  # the type of object in input, and the type of data returned
+  addEvent(input: EventAddInput!): Event
+  updateEvent(id: Int!, input: EventUpdateInput!): Event
+  deleteEvent(id: Int!): Boolean!
+}
+
