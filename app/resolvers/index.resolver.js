@@ -2,7 +2,6 @@
 
 import Query from './query.resolver.js';
 import Mutation from './mutation.resolver.js';
-import Event from './event.resolver.js';
 
 export default {
   
@@ -10,5 +9,5 @@ export default {
 
   Mutation,
 
-  Event,
 };
+

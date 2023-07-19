@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node .",
+    "dev": "DEBUG=server*,app*,knex* npx nodemon --ext js,gql",
+    "resetDB": "sqitch revert -y; sqitch deploy; DEBUG=seeding node ./data/seeding-sample.js"
   },
   "author": "",
   "license": "ISC",

@@ -1,25 +1,28 @@
-/** Import of Apollo Server IAW tutorial "Get started":
+/** 
+ * Import of Apollo Server IAW tutorial "Get started":
  * https://www.apollographql.com/docs/apollo-server/getting-started;
- * typeDefs required by Apollo defines the structure of data using schemas;
- * resolvers required by Apollo;
- * Weather is a class instanciated from a RESTDataSource;
- * ojoDB is a class instanciated from BatchedSQLDataSource using Knex for Batch management;
- * authenticate is an export of the function that provides user info;
- * Debug for an enriched log that helps debugging;
- * Import of an helper for dotenv required for eslint type module;
+ * TypeDefs required by Apollo defines the structure of data using 
+ * schemas in GraphQL and resolvers in JS.
+ * 
+ * ojoDB is a class instanciated from BatchedSQLDataSource using Knex for Batch management.
+ * 
+ * Debug for an enriched log that helps debugging.
+ * 
+ * Import of an helper for dotenv required by eslint type module.
+ * 
+ * Knex link:https://knexjs.org/guide/
  */
 
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import typeDefs from './app/typeDefs.js';
 import resolvers from './app/resolvers/index.resolver.js';
-import Weather from './app/datasources/weather.datasource.js';
 import ojoDB from './app/datasources/ojo.db.datasource.js';
-import authenticate from './app/helpers/authenticate.js';
 import debug from 'debug';
 import './app/helpers/env.loader.js';
 
-// Call of Knex as a query builder
+// For this Api we will use knex as a query builder,
+// providing a batch/cache support.
 const knexConfig = {
   client: 'pg',
   connection: {
@@ -41,22 +44,19 @@ const server = new ApolloServer({
     resolvers,
 });
 
-// As suggested by Apollo tuto, use of a function like a middleware 
+// As suggested by Apollo tuto, we use a function like a middleware 
 // to get a promised object (usually available in express)
 const { url } = await startStandaloneServer(server, {
 
-  context: async ({ req }) => {
+  context: async  => {
     const { cache } = server;
     return {
       dataSources: {
-        weather: new Weather({ cache }),
         ojoDB: new ojoDB({ knexConfig, cache }),
       },
-      ip: req.ip,
-      user: await authenticate.getUser(req),
     };
   },
-  listen: { port: 4000 },
+  listen: { port: 3000 },
 });
 
 debugServer(`🚀  Server ready at: ${url}`);
