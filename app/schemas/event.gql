@@ -1,28 +1,28 @@
+# Issue : type Slot: Hour-Hour! have jeopardized the launching of the server that 
+# have send the error: GraphQLError: Syntax Error: Invalid number, expected digit but got: "H"
+# The issue was comming from the hyphen that is not allowed in Graphql
+# Although, the underscore is accepted so it has been used in replacement to define the Slot type
+
+
 # For the query we define the different type of input
 type Event {
   id: Int!
-  day: Date!
-  Description: String
-  Slot: Hour-Hour!
-  Game: Game
-  Site: Site
-  Users: [User]
+  day: String!
+  description: String
+  slot: String!
 }
 
 # For the mutation we have to use the word input but the inputs stay the same
 input EventAddInput {
-  day: Date!
-  Description: String
-  Slot: Hour-Hour!
-  Game_id: Game!
-  Site_id: Site!
+  day: String!
+  description: String
+  slot: String!
 }
 
 # We define two diffrents input because we allow a partial update (each data is not required)
 input EventUpdateInput {
-  day: Date
-  Description: String
-  Slot: Hour-Hour
-  Game_id: Game
-  Site_id: Site
+  day: String
+  description: String
+  slot: String
 }
+

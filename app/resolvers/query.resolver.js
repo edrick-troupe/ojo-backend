@@ -10,7 +10,7 @@
 export default {
 
   app() {
-    return 'event';
+    return 'OJO 2024';
   },
 
   async events(_, __, { dataSources }) {

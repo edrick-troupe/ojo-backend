@@ -1,23 +1,30 @@
 -- Deploy ojo:structure to pg
 
+
 BEGIN;
 
 -- XXX Add DDLs here.
 
 CREATE DOMAIN "slug" AS TEXT
-  CHECK(
-    VALUE ~ '^[a-z]+(?:-[a-z]+)*$'
+    CHECK(
+        VALUE ~ '^[a-z]+(?:-[a-z]+)*$'
 );
 
-CREATE DOMAIN "email" AS text
-  CHECK(
-    value ~ '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+CREATE DOMAIN "email" AS TEXT
+    CHECK(
+        value ~ '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
 );
 
-CREATE DOMAIN "slot" AS text
-  CHECK(
-    value ~ '^([0-1]?[0-9]|2[0-3]):[0-5][0-9]-([0-1]?[0-9]|2[0-3]):[0-5][0-9]$'
+CREATE DOMAIN "slot" AS TEXT
+    CHECK(
+        value ~ '^([0-1]?[0-9]|2[0-3]):[0-5][0-9]-([0-1]?[0-9]|2[0-3]):[0-5][0-9]$'
 );
+
+CREATE DOMAIN "day_format" AS TEXT
+    CHECK( 
+        value ~ '^(3[01]|[12][0-9]|0[1-9])[\/](1[0-2]|0[1-9])[\/][0-9]{2}$'
+);
+
 
 CREATE TABLE "site" 
 (
@@ -51,7 +58,7 @@ CREATE TABLE "game"
 CREATE TABLE "event" 
 (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    "day" DATE NOT NULL,
+    "day" day_format NOT NULL,
     "description" TEXT,
     "slot" slot NOT NULL,
     "game_id" INT NOT NULL REFERENCES "game" ("id"),

@@ -2,17 +2,16 @@
  * For this CoreDatamapper we will use knex as a query builder
  * providing a batch/cache support.
  * 
- * If we was to make the same query over the course of multiple requests,
- * we could be making needless requests to our server,
- * especially for expensive queries.
+ * Batch: DataLoaders help us by collecting all of our queries and combining them in a single one.
  * 
- * SQLDataSource leverages Apollo's caching strategy to save results,
+ * Cache: SQLDataSource leverages Apollo's caching strategy to save results,
  * between requests and makes that available via .cache().
- *  
+ * 
  * This method accepts one OPTIONAL parameter, TTL that is the number of seconds,
  * to retain the data in the cache.
- * 
  * The default value for cache is 5 seconds but we can adjust it with process.env.SQL_CACHE_TTL.
+ * 
+ * Cf link:https://socket.dev/npm/package/@nic-jennings/batched-sql-datasource
  */
 
 class CoreDatamapper {
@@ -22,6 +21,7 @@ class CoreDatamapper {
     this.db = db;
   }
 
+  // Dataloading process using .batch & .cache methods
   init() {
     this.batchByPk = this.db.query
       .from(this.tableName)
@@ -44,7 +44,7 @@ class CoreDatamapper {
   }
 
   /**
-     * how to get data by id
+     * Informations on how to get data by id
      * @param {number|number[]} id id or list of id's
      * @returns a record or list of records
      */
@@ -58,15 +58,11 @@ class CoreDatamapper {
     /* Equivalent to:
     const preparedQuery = {
       text: `SELECT * FROM "${this.tableName}" WHERE id = $1`,
-      values: [id],
-    };
-
+      values: [id],};
     const result = await this.client.query(preparedQuery);
-
     if (!result.rows[0]) {
       return null;
     }
-
     return result.rows[0];
     */
   }
@@ -74,6 +70,15 @@ class CoreDatamapper {
   async findAll(params) {
     const query = this.db.query
       .from(this.tableName);
+      /* Equivalent to:
+    const preparedQuery = {
+      text: `SELECT * FROM "${this.tableName}"};
+    const result = await this.client.query(preparedQuery);
+    if (!result.rows) {
+      return null;
+    }
+    return result.rows;
+    */
    
     if (params?.where) {
       query.where(params.where);

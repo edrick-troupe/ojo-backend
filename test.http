@@ -1,0 +1,13 @@
+### Récupération de tout les events avec leur id
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query Events {
+  events {
+    id
+    day
+    description
+    slot
+  }
+}

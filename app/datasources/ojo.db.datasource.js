@@ -2,13 +2,14 @@
  * Here we use BatchedSQLDataSource that combines the power of Knex with Apollo DataSources
  * along with the benefit of having batching functionality from the DataLoader package.
  * 
- * Cf link:https://socket.dev/npm/package/@nic-jennings/batched-sql-datasource
+ * batched-sql-datasource link:https://socket.dev/npm/package/@nic-jennings/batched-sql-datasource
+ * Knex link:https://knexjs.org/guide/
  */
 
 import { BatchedSQLDataSource } from '@nic-jennings/sql-datasource';
 import Event from '../datamappers/event.datamapper.js';
 
-export default class RestoDB extends BatchedSQLDataSource {
+export default class ojoDB extends BatchedSQLDataSource {
 
   eventDatamapper;
 

@@ -11,7 +11,9 @@ const dirname = url.fileURLToPath(new URL('.', import.meta.url));
 // Provide us with the main path of the project
 
 const schemas = [
+  'query',
   'event',
+  'mutation',
 ].map(
   (file) => fs.readFileSync(path.resolve(`${dirname}./schemas/${file}.gql`)),
 );

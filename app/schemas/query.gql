@@ -4,7 +4,7 @@
 type Query {
 
   # In GraphQL we can add comments with" 
-  "It allows us to get the name of the app";
+  "It allows us to get the name of the app"
   # When we reclame informations we can precise the type to return,
   # and define if it is mandatory
   app: String!
