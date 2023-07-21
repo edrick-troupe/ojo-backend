@@ -58,8 +58,8 @@ class CoreDatamapper {
     /* Equivalent to:
     const preparedQuery = {
       text: `SELECT * FROM "${this.tableName}" WHERE id = $1`,
-      values: [id],};
-    const result = await this.client.query(preparedQuery);
+      values: [id]};
+    const result = await this.db.query(preparedQuery);
     if (!result.rows[0]) {
       return null;
     }
@@ -70,21 +70,36 @@ class CoreDatamapper {
   async findAll(params) {
     const query = this.db.query
       .from(this.tableName);
-      /* Equivalent to:
+   
+    if (params?.where) {
+      query.where(params.where);
+    }
+
+    const rows = await query.cache(process.env.SQL_CACHE_TTL);
+    return rows;
+    /* Equivalent to:
     const preparedQuery = {
       text: `SELECT * FROM "${this.tableName}"};
-    const result = await this.client.query(preparedQuery);
+    const result = await this.db.query(preparedQuery);
     if (!result.rows) {
       return null;
     }
     return result.rows;
     */
-   
-    if (params?.where) {
-      query.where(params.where);
+
+    /*
+    Example if where :
+    const events = await dataSources.ojoDB.eventDatamapper
+    .findAll({where: {day: '27/07/24'}})
+    const preparedQuery = {
+      text: `SELECT * FROM "event" WHERE "day" = $1`,
+      values: ['27/07/24']};
+    const result = await this.db.query(preparedQuery);
+    if (!result.rows) {
+      return null;
     }
-    const rows = await query.cache(process.env.SQL_CACHE_TTL);
-    return rows;
+    return result.rows;
+    */
   }
 
   async create(inputData) {
@@ -93,8 +108,15 @@ class CoreDatamapper {
       .insert(inputData)
       .returning('*');
     return rows[0];
+    /* Example:
+    const preparedQuery = {
+      text: `INSERT INTO "event" ("day", "description", "game_id", "site_id", "slot") 
+      values ($1, $2, $3, $4, $5) returning *`,
+      [ inputData.day, inputData.description, inputData.game_id, inputData.site_id, inputData.slot]
+      const result = await this.db.query(preparedQuery);
+     */
   }
-
+  
   async update(id, inputData) {
     const rows = await this.db.query
       .from(this.tableName)
@@ -102,11 +124,30 @@ class CoreDatamapper {
       .where({ id })
       .returning('*');
     return rows[0];
+    /* Example:
+    const preparedQuery = {
+      text: `UPDATE "event" SET "description" = $1 WHERE "id" = $2 RETURNING *`,
+      values: [ inputData.description, id]};
+      const result = await this.db.query(preparedQuery);
+     */
   }
 
   async delete(id) {
-    const rowCount = await this.db.query.from(this.tableName).where({ id });
+    const rowCount = await this.db.query
+    .from(this.tableName)
+    .delete(id)
+    .where({ id });
     return !!rowCount;
+    /* Equivalent to:
+    const preparedQuery = {
+      text: `DELETE FROM "${this.tableName}" WHERE id = $1`,
+      values: [id]};
+    const result = await this.db.query(preparedQuery);
+    return !!preparedQuery.rowCount;
+    Here we cast the result returned to be a boolean (true/false)
+    If rowCount = 1 (truthy) => deleted
+    If rowCount = 0 (falsy) => already deleted or id not registered
+    */
   }
 }
 

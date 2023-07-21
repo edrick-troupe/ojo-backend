@@ -12,8 +12,9 @@ const dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 const schemas = [
   'query',
-  'event',
   'mutation',
+  'event',
+  'user',
 ].map(
   (file) => fs.readFileSync(path.resolve(`${dirname}./schemas/${file}.gql`)),
 );

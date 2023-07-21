@@ -1,4 +1,5 @@
 export default {
+  
   async addEvent(_, { input }, { dataSources }) {
     const event = await dataSources.ojoDB.eventDatamapper.create(input);
     return event;
@@ -12,3 +13,4 @@ export default {
     return result;
   },
 };
+

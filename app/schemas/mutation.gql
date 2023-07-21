@@ -7,5 +7,7 @@ type Mutation {
   addEvent(input: EventAddInput!): Event
   updateEvent(id: Int!, input: EventUpdateInput!): Event
   deleteEvent(id: Int!): Boolean!
+
+  updateUser(input: UserUpdateInput!): User
 }
 

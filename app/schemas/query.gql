@@ -3,7 +3,7 @@
 
 type Query {
 
-  # In GraphQL we can add comments with" 
+  # In GraphQL we can add comments with " 
   "It allows us to get the name of the app"
   # When we reclame informations we can precise the type to return,
   # and define if it is mandatory
@@ -11,6 +11,9 @@ type Query {
 
   # To define if an attribute/request return a collection we use []
   events: [Event]
-
   event(id: Int!): Event
+
+  user: User
+  login(email: String!, password: String!): JsonWebToken
+
 }

@@ -1,0 +1,25 @@
+type User {
+  id: Int!
+  email: String!
+  firstname: String
+  lastname: String
+  events: [Event]
+}
+
+input UserAddInput {
+  email: String!
+  firstname: String!
+  lastname: String!
+}
+
+input UserUpdateInput {
+  email: String
+  firstname: String
+  lastname: String
+}
+
+type JsonWebToken{
+  token: String!
+  expireAt: String!
+}
+

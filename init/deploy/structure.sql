@@ -72,8 +72,8 @@ CREATE TABLE "user"
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "email" email NOT NULL,
     "password" TEXT NOT NULL,
-    "firstname" TEXT NOT NULL,
-    "lastname" TEXT NOT NULL,
+    "firstname" TEXT,
+    "lastname" TEXT,
     "isadmin" BOOLEAN NOT NULL DEFAULT FALSE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMPTZ

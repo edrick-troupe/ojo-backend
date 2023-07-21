@@ -20,6 +20,8 @@ import resolvers from './app/resolvers/index.resolver.js';
 import ojoDB from './app/datasources/ojo.db.datasource.js';
 import debug from 'debug';
 import './app/helpers/env.loader.js';
+import authenticate from './app/helpers/authenticate.js';
+import Weather from './app/datasources/weather.datasource.js';
 
 // For this Api we will use knex as a query builder,
 // providing a batch/cache support.
@@ -48,12 +50,15 @@ const server = new ApolloServer({
 // to get a promised object (usually available in express)
 const { url } = await startStandaloneServer(server, {
 
-  context: async  => {
+  context: async ({ req }) => {
     const { cache } = server;
     return {
       dataSources: {
         ojoDB: new ojoDB({ knexConfig, cache }),
+        weather: new Weather({ cache }),
       },
+      ip: req.ip,
+      user: await authenticate.getUser(req),
     };
   },
   listen: { port: 3000 },

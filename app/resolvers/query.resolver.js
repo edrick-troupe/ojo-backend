@@ -1,3 +1,7 @@
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import { GraphQLError } from 'graphql';
+
 /**
    *
    * @param {object} _ parent usually used in Query type
@@ -23,4 +27,64 @@ export default {
     const event = await dataSources.ojoDB.eventDatamapper.findByPk(eventId);
     return event;
   },
+
+  // For login function, we verify if the user email already exists in DB
+  async login(_, { email, password }, { dataSources, ip }) {
+    
+    const [user] = await dataSources.ojoDB.userDatamapper.findAll({ where: { email } });
+    if (!user) {
+      throw new GraphQLError('Authentication failed.', {
+        extensions: {
+          code: 'UNAUTHENTICATED',
+        },
+      });
+    }
+
+    // If email is validated by DB, we verify the password using bcrypt
+    const passwordIsValid = await bcrypt.compare(password, user.password);
+    if (!passwordIsValid) {
+      throw new GraphQLError('Authentication failed.', {
+        extensions: {
+          code: 'UNAUTHENTICATED',
+        },
+      });
+    }
+
+    // Once the email and password are validated we can create the token
+    const expiresIn = parseInt(process.env.JSON_WEB_TOKEN_EXPIRES_IN_SECONDS, 10) ?? 300;
+    const token = jwt.sign(
+      {
+        id: user.id,
+        email: user.email,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        // We can add additional information like the user ip
+        ip,
+      },
+      process.env.JSON_WEB_TOKEN_PRIVATE_KEY,
+      { expiresIn },
+    );
+
+    const now = new Date();
+    const time = now.getTime();
+
+    return {
+      token,
+      expireAt: time + expiresIn,
+    };
+  },
+
+  // Resolver of Query User ( maybe already authenticated by JWT )
+  async user(_, __, { dataSources, user }) {
+    if (!user) {
+      throw new GraphQLError("Access denied", {
+        extensions: {
+          code: 'FORBIDDEN',
+        },
+      });
+    }
+    const user = await dataSources.ojoDB.userDatamapper.findByPk(user.id);
+    return user;
+  },
+
 }
