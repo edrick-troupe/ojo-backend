@@ -1,0 +1,6 @@
+type Weather {
+  day: Int!
+  precipitation: Float!
+  temperature: Float!
+  sky: String!
+}

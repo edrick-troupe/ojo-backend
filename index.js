@@ -6,12 +6,19 @@
  * 
  * ojoDB is a class instanciated from BatchedSQLDataSource using Knex for Batch management.
  * 
+ * Knex link:https://knexjs.org/guide/ is the query builder that manages batch & cache
+ * 
  * Debug for an enriched log that helps debugging.
  * 
  * Import of an helper for dotenv required by eslint type module.
  * 
- * Knex link:https://knexjs.org/guide/
- */
+ * Authenticate will import a function that calls JWT
+ * 
+ * Weather calls an object RESTDataSource from @apollo/datasource-rest module,
+ * that will call the api https://www.weatherapi.com/
+ * 
+ * 
+*/
 
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';

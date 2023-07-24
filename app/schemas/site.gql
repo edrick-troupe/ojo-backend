@@ -1,0 +1,29 @@
+type Site {
+  id: Int!
+  name: String!
+  slug: String!
+  picture: String
+  description: String
+  latitude: Float!
+  longitude: Float!
+  events: [Event]
+  weather: [Weather]
+}
+
+input SiteAddInput{
+  name: String!
+  slug: String!
+  picture: String
+  description: String
+  latitude: Float!
+  longitude: Float!
+}
+
+input SiteUpdateInput{
+  name: String
+  slug: String
+  picture: String
+  description: String
+  latitude: Float
+  longitude: Float
+}

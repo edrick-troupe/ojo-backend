@@ -15,6 +15,9 @@ const schemas = [
   'mutation',
   'event',
   'user',
+  'game',
+  'site',
+  'weather',
 ].map(
   (file) => fs.readFileSync(path.resolve(`${dirname}./schemas/${file}.gql`)),
 );

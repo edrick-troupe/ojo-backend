@@ -79,7 +79,7 @@ CREATE TABLE "user"
     "updated_at" TIMESTAMPTZ
 );
 
-CREATE TABLE "user_has_event" (
+CREATE TABLE "event_has_user" (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "user_id" INT NOT NULL REFERENCES "user" ("id"),
     "event_id" INT NOT NULL REFERENCES "event" ("id"),

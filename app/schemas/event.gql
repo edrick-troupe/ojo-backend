@@ -10,9 +10,9 @@ type Event {
   day: String!
   description: String
   slot: String!
-  # game: Game
-  # site: Site
-  # users: [User]
+  game: Game
+  site: Site
+  users: [User]
   
 }
 

@@ -8,32 +8,46 @@
 
 import { BatchedSQLDataSource } from '@nic-jennings/sql-datasource';
 import Event from '../datamappers/event.datamapper.js';
+import User from '../datamappers/user.datamapper.js';
+import Game from '../datamappers/game.datamapper.js';
+import Site from '../datamappers/site.datamapper.js';
+
+/**
+ * @typedef {object} Config
+ * @property {object} knexConfig
+ * @property {object} cache
+ */
+/**
+ * @param {Config} config
+ */
 
 export default class ojoDB extends BatchedSQLDataSource {
 
+  // Here we define the tablename
   eventDatamapper;
+  userDatamapper;
+  gameDatamapper;
+  siteDatamapper;
 
-  /**
-   * @typedef {object} Config
-   * @property {object} knexConfig
-   * @property {object} cache
-   */
-  /**
-   * @param {Config} config
-   */
-  
+  // We put the config object for the BatchedSQLDataSource module.
   constructor(config) {
-  
+
+    // We use the generated object from the module and it will allow us to make SQL queries
+    // with Knex query builder, collect by batch and put store data in cache
     super(config);
-    // Nous ce qui nous intéresse c'est l'objet généré par le module qui va nous permettre de faire
-    // nos requêtes SQL avec le query Builder, nous permmettre de mettre en cache, et nous permettre
-    // une récupération par batch.
 
-    // Cet objet on le transemt à chaque datamapper
+    // Here we create a new objects as datamappers that will help us using batch and cache
     this.eventDatamapper = new Event(this.db);
+    this.userDatamapper = new User(this.db);
+    this.gameDatamapper = new Game(this.db);
+    this.siteDatamapper = new Site(this.db);
 
-    // Afin d'activer les récupération par batch après la définition de chaque tableName, on est
-    // obligé d'appeler une méthode init sur chaque datamapper.
+    // Hence, in order to activate the the collection by batch, we need to use an Init function
     this.eventDatamapper.init();
+    this.userDatamapper.init();
+    this.gameDatamapper.init();
+    this.siteDatamapper.init();
   }
 }
+
+

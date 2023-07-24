@@ -8,6 +8,16 @@ type Mutation {
   updateEvent(id: Int!, input: EventUpdateInput!): Event
   deleteEvent(id: Int!): Boolean!
 
+  addSite(input: SiteAddInput!): Site
+  updateSite(id: Int!, input: SiteUpdateInput!): Site
+  deleteSite(id: Int!): Boolean!
+
+  addGame(input: GameAddInput!): Game
+  updateGame(id: Int!, input: GameUpdateInput!): Game
+  deleteGame(id: Int!): Boolean!
+
+
+  addUser(input: UserAddInput!): User
   updateUser(input: UserUpdateInput!): User
 }
 

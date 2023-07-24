@@ -28,7 +28,29 @@ export default {
     return event;
   },
 
-  // For login function, we verify if the user email already exists in DB
+  async sites(_, __, { dataSources }) {
+    const sites = await dataSources.ojoDB.siteDatamapper.findAll();
+    return sites;
+  },
+
+  async site(_, args, { dataSources }) {
+    const { id: siteId } = args;
+    const site = await dataSources.ojoDB.siteDatamapper.findByPk(siteId);
+    return site;
+  },
+
+  async games(_, __, { dataSources }) {
+    const games = await dataSources.ojoDB.gameDatamapper.findAll();
+    return games;
+  },
+
+  async game(_, args, { dataSources }) {
+    const { id: gameId } = args;
+    const game = await dataSources.ojoDB.gameDatamapper.findByPk(gameId);
+    return game;
+  },
+
+  // For login function, verify if the user email already exists in DB
   async login(_, { email, password }, { dataSources, ip }) {
     
     const [user] = await dataSources.ojoDB.userDatamapper.findAll({ where: { email } });
@@ -74,7 +96,7 @@ export default {
     };
   },
 
-  // Resolver of Query User ( maybe already authenticated by JWT )
+  // Here we define the resolver of User ( maybe already authenticated by JWT )
   async user(_, __, { dataSources, user }) {
     if (!user) {
       throw new GraphQLError("Access denied", {
@@ -83,8 +105,8 @@ export default {
         },
       });
     }
-    const user = await dataSources.ojoDB.userDatamapper.findByPk(user.id);
-    return user;
+    const loggeddUser = await dataSources.ojoDB.userDatamapper.findByPk(user.id);
+    return loggeddUser;
   },
-
 }
+

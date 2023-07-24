@@ -1,0 +1,34 @@
+type Game {
+  id: Int!
+  label: String!
+  slug: String!
+  picture: String!
+  logo: String
+  decription: String!
+  favorite: Boolean!
+  paralympic: Boolean!
+  tag: String
+  events: [Event]
+}
+
+input GameAddInput{
+  label: String!
+  slug: String!
+  picture: String!
+  logo: String
+  decription: String!
+  favorite: Boolean!
+  paralympic: Boolean!
+  tag: String
+}
+
+input GameUpdateInput{
+  label: String
+  slug: String
+  picture: String
+  logo: String
+  decription: String
+  favorite: Boolean
+  paralympic: Boolean
+  tag: String
+}
