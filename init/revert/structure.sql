@@ -4,7 +4,7 @@ BEGIN;
 
 -- XXX Add DDLs here.
 
-DROP TABLE "user_has_event", "event","user", "game", "site";
+DROP TABLE "event_has_user", "event","user", "game", "site";
 
 DROP DOMAIN "day_format", "slot", "email", "slug";
 

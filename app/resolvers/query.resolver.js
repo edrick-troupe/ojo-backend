@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { GraphQLError } from 'graphql';
+import debug from 'debug';
 
 /**
    *
@@ -55,7 +56,7 @@ export default {
     
     const [user] = await dataSources.ojoDB.userDatamapper.findAll({ where: { email } });
     if (!user) {
-      throw new GraphQLError('Authentication failed.', {
+      throw new GraphQLError('Mail(tobedeleted) Authentication failed.', {
         extensions: {
           code: 'UNAUTHENTICATED',
         },
@@ -64,8 +65,9 @@ export default {
 
     // If email is validated by DB, we verify the password using bcrypt
     const passwordIsValid = await bcrypt.compare(password, user.password);
+    
     if (!passwordIsValid) {
-      throw new GraphQLError('Authentication failed.', {
+      throw new GraphQLError('Password(tobedeleted) Authentication failed.', {
         extensions: {
           code: 'UNAUTHENTICATED',
         },
@@ -73,7 +75,7 @@ export default {
     }
 
     // Once the email and password are validated we can create the token
-    const expiresIn = parseInt(process.env.JSON_WEB_TOKEN_EXPIRES_IN_SECONDS, 10) ?? 300;
+    const expiresIn = parseInt(process.env.JSON_WEB_TOKEN_EXPIRES_IN_MINUTES, 10) ?? 30;
     const token = jwt.sign(
       {
         id: user.id,
@@ -96,17 +98,23 @@ export default {
     };
   },
 
-  // Here we define the resolver of User ( maybe already authenticated by JWT )
-  async user(_, __, { dataSources, user }) {
-    if (!user) {
-      throw new GraphQLError("Access denied", {
+  // User : potentialy already loogedin with JWT
+  async user(_, __, { dataSources, newUser }) {
+    if (!newUser) {
+      throw new GraphQLError("Access denied: Please register before login", {
         extensions: {
           code: 'FORBIDDEN',
         },
       });
     }
-    const loggeddUser = await dataSources.ojoDB.userDatamapper.findByPk(user.id);
-    return loggeddUser;
+    const user = await dataSources.ojoDB.userDatamapper.findByPk(newUser.id);
+    return user;
+  },
+/*
+  async logout (req){
+    const bearer = req.headers.authorization
+    delete bearer
   },
 }
-
+*/
+}

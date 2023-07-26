@@ -4,7 +4,7 @@ type Game {
   slug: String!
   picture: String!
   logo: String
-  decription: String!
+  description: String!
   favorite: Boolean!
   paralympic: Boolean!
   tag: String
@@ -16,7 +16,7 @@ input GameAddInput{
   slug: String!
   picture: String!
   logo: String
-  decription: String!
+  description: String!
   favorite: Boolean!
   paralympic: Boolean!
   tag: String
@@ -27,7 +27,7 @@ input GameUpdateInput{
   slug: String
   picture: String
   logo: String
-  decription: String
+  description: String
   favorite: Boolean
   paralympic: Boolean
   tag: String

@@ -10,15 +10,15 @@ class Weather extends RESTDataSource {
         q: `${lat},${lng}`,
         aqi: 'no',
         alerts: 'no',
-        days: 7,
+        days: 1,
       },
     });
 
     return weather.forecast.forecastday.map((forecastday) => ({
-      day: forecastday.date_epoch,
-      precipitation: forecastday.day.totalprecip_mm,
+      day: forecastday.date,
       temperature: forecastday.day.avgtemp_c,
       sky: forecastday.day.condition.text,
+      icon: forecastday.day.condition.icon,
     }));
   }
 }

@@ -47,8 +47,8 @@ export default {
     return result;
   },
 
-  async addUser(_, { input }, { dataSources }) {
-    const user = await dataSources.ojoDB.userDatamapper.create(input);
+  async registerUser(_, { input }, { dataSources }) {
+    const user = await dataSources.ojoDB.userDatamapper.register(input);
     return user;
   },
 
@@ -56,6 +56,7 @@ export default {
     const user = await dataSources.ojoDB.userDatamapper.update(id, input);
     return user;
   },
+
 };
 
 

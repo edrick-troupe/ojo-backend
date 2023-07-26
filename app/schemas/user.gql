@@ -1,19 +1,22 @@
 type User {
   id: Int!
   email: String!
+  password: String!
   firstname: String
   lastname: String
   events: [Event]
 }
 
-input UserAddInput {
+input UserRegisterInput {
   email: String!
-  firstname: String!
-  lastname: String!
+  password: String!
+  firstname: String
+  lastname: String
 }
 
 input UserUpdateInput {
   email: String
+  password: String
   firstname: String
   lastname: String
 }
@@ -22,4 +25,5 @@ type JsonWebToken{
   token: String!
   expireAt: String!
 }
+
 

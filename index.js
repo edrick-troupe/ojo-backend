@@ -65,7 +65,7 @@ const { url } = await startStandaloneServer(server, {
         weather: new Weather({ cache }),
       },
       ip: req.ip,
-      user: await authenticate.getUser(req),
+      newUser: await authenticate.getUser(req),
     };
   },
   listen: { port: 3000 },

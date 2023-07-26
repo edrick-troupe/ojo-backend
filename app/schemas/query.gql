@@ -17,9 +17,9 @@ type Query {
   site(id: Int!): Site
 
   games: [Game]
-  game: Game
+  game(id: Int!): Game
 
   user: User
   login(email: String!, password: String!): JsonWebToken
-
+  #logout(token: String!): Boolean!
 }

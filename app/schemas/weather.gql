@@ -1,6 +1,6 @@
 type Weather {
-  day: Int!
-  precipitation: Float!
+  day: String!
   temperature: Float!
   sky: String!
+  icon: String!
 }

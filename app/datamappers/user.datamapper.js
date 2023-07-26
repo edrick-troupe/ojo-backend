@@ -1,4 +1,5 @@
 import CoreDatamapper from './coreDatamapper.js';
+import bcrypt from 'bcrypt';
 
 class User extends CoreDatamapper {
   tableName = 'user';
@@ -14,6 +15,27 @@ class User extends CoreDatamapper {
       .cache(process.env.SQL_CACHE_TTL);
     return rows;
   }
+
+  async register(inputData) {
+    /*const user = await dataSources.ojoDB.userDatamapper.findAll({ where: { email } });
+    if (user.email == inputData.email) {
+      throw new GraphQLError('Mail already registered', {
+        extensions: {
+          code: 'FORBIDDEN',
+          },
+          
+        return null;
+      }
+    */
+    inputData.password = await bcrypt.hash(inputData.password, 10)
+    const rows = await this.db.query
+      .into(this.tableName)
+      .insert(inputData)
+      .returning('*');
+    return rows[0];
+  }
 }
 
 export default User;
+
+

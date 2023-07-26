@@ -75,7 +75,8 @@ INSERT INTO "user" ("email", "password", "firstname", "lastname", "isadmin")
 VALUES 
 ('Gustave.Jacquet@yahoo.fr', 'lh_sIhteFrXaIHQ', 'Gustave', 'Jacquet', 'no'),
 ('Audrey.Marie14@gmail.com', 'ol11wqZbCWro6aH', 'Audrey', 'Marie', 'no'),
-('Brice.Lemaire@hotmail.fr', 'LdFYLbXCRFXjZF1', 'Brice', 'Lemaire', 'no');
+('Brice.Lemaire@hotmail.fr', 'LdFYLbXCRFXjZF1', 'Brice', 'Lemaire', 'no'),
+('arno@oclock.io', '$2b$10$h4Dh2fRGAf4YdC.Cqg1yleq41QHmG61B76THHCp03SgMEizvZlscy', 'Arnaud', 'Valentin', 'no');
 
 
 COMMIT;

@@ -6,7 +6,7 @@ export default {
     try {
       const bearer = req.headers.authorization || '';
       if (!bearer) {
-        throw new Error('no authorization');
+        throw new Error('No Bearer into Authorization');
       }
       // Bearer eyJhbGciOiJIUzI1N
       // split(' ')
@@ -17,15 +17,20 @@ export default {
       ]
       */
       const [, token] = bearer.split(' ');
-      const user = await jwt.verify(token, process.env.JSON_WEB_TOKEN_PRIVATE_KEY);
-      if (!user) {
-        return null;
+      const newUser = await jwt.verify(token, process.env.JSON_WEB_TOKEN_PRIVATE_KEY);
+      if (!newUser) {
+        throw new Error('Token not validated');
+       // return null;
       }
-      // Then we check that the user ip is the same as the one used to create the token
-      if (user.ip !== req.ip) {
-        return null;
-      }
+      
+      
+      // We can add an additionnal layer of security by verifying the ip's
+      // We check that the newUser ip is the same as the one used to create the token
       /*
+      if (newUser.ip !== req.ip) {
+        return null;
+      }
+      
       {
         id: 1,
         email: 'jean.dupont@oclock.io,
@@ -34,7 +39,8 @@ export default {
         ip: '192.168.1.1',
       },
       */
-      return user;
+      return newUser;
+      
     } catch (err) {
       // In case of JWT error (expires) we just through nothing
       return null;
