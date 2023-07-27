@@ -16,29 +16,22 @@ export default {
         'eyJhbGciOiJIUzI1N'
       ]
       */
+      console.log(bearer)
       const [, token] = bearer.split(' ');
+      console.log(token)
       const newUser = await jwt.verify(token, process.env.JSON_WEB_TOKEN_PRIVATE_KEY);
       if (!newUser) {
-        throw new Error('Token not validated');
-       // return null;
-      }
-      
-      
-      // We can add an additionnal layer of security by verifying the ip's
-      // We check that the newUser ip is the same as the one used to create the token
-      /*
-      if (newUser.ip !== req.ip) {
         return null;
       }
-      
+      /*
       {
         id: 1,
         email: 'jean.dupont@oclock.io,
         firstname: 'Jean',
         lastname: 'Dupont,
-        ip: '192.168.1.1',
       },
       */
+      console.log(newUser)
       return newUser;
       
     } catch (err) {

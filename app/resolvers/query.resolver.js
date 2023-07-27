@@ -1,7 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { GraphQLError } from 'graphql';
-import debug from 'debug';
 
 /**
    *
@@ -75,26 +74,19 @@ export default {
     }
 
     // Once the email and password are validated we can create the token
-    const expiresIn = parseInt(process.env.JSON_WEB_TOKEN_EXPIRES_IN_MINUTES, 10) ?? 30;
     const token = jwt.sign(
       {
         id: user.id,
         email: user.email,
         firstname: user.firstname,
         lastname: user.lastname,
-        // We can add additional information like the user ip
-        ip,
       },
       process.env.JSON_WEB_TOKEN_PRIVATE_KEY,
-      { expiresIn },
+      { expiresIn: process.env.JSON_WEB_TOKEN_EXPIRES_DURATION },
     );
-
-    const now = new Date();
-    const time = now.getTime();
-
+    
     return {
       token,
-      expireAt: time + expiresIn,
     };
   },
 

@@ -1,3 +1,5 @@
+import { GraphQLError } from 'graphql';
+
 // Define mutation CRUD (POST, PATCH, DELETE)
 
 export default {
@@ -52,8 +54,16 @@ export default {
     return user;
   },
 
-  async updateUser(_, { input }, { dataSources }) {
-    const user = await dataSources.ojoDB.userDatamapper.update(id, input);
+  async updateUser(_, { input }, { dataSources, newUser }) {
+    
+    if (!newUser) {
+      throw new GraphQLError("Access denied: Please register before login", {
+        extensions: {
+          code: 'FORBIDDEN',
+        },
+      });
+    }
+    const user = await dataSources.ojoDB.userDatamapper.update(newUser.id, input);
     return user;
   },
 

@@ -118,7 +118,6 @@ X-REQUEST-TYPE: GraphQL
 query ($email: String!, $password: String!){
   login(email: $email, password: $password){
     token
-    expireAt
   }
 }
 
@@ -131,12 +130,35 @@ query ($email: String!, $password: String!){
 POST http://localhost:3000/
 Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImVtYWlsIjoic29meWFubkBvY2xvY2suaW8iLCJmaXJzdG5hbWUiOiJzb2Z5YW5uIiwibGFzdG5hbWUiOiJIZWxwZXIiLCJpcCI6Ijo6ZmZmZjoxMjcuMC4wLjEiLCJpYXQiOjE2OTAzNzQwOTksImV4cCI6MTY5MDM3NDEyOX0.eQ77uw7XvgL75DQNiNKikAUjFj7oke3JwhHcgEeXTNI
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImVtYWlsIjoic29meWFubkBvY2xvY2suaW8iLCJmaXJzdG5hbWUiOiJzb2Z5YW5uIiwibGFzdG5hbWUiOiJIZWxwZXIiLCJpcCI6Ijo6ZmZmZjoxMjcuMC4wLjEiLCJpYXQiOjE2OTAzODExMTEsImV4cCI6MTY5Mjk3MzExMX0.9zEbXokLntC_cAKidxaDIaUN_GyPiL1lpMur1TPaaMw
 
 query {
   user {
+    id
     email
     firstname
+    lastname
+  }
+}
+
+### Update of a User
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTgsImVtYWlsIjoic29meWFubkBvY2xvY2suaW8iLCJmaXJzdG5hbWUiOiJzb2Z5YW5uIiwibGFzdG5hbWUiOiJIZWxwZXIiLCJpcCI6Ijo6ZmZmZjoxMjcuMC4wLjEiLCJpYXQiOjE2OTAzODExMTEsImV4cCI6MTY5Mjk3MzExMX0.9zEbXokLntC_cAKidxaDIaUN_GyPiL1lpMur1TPaaMw
+
+mutation Mutation($updateUserId: Int!, $input: UserUpdateInput!) {
+  updateUser(id: $updateUserId, input: $input) {
+    id
+    email
+    firstname
+    lastname
+  }
+}
+
+{
+  "input": {
+    "lastname": "Le S"
   }
 }
 

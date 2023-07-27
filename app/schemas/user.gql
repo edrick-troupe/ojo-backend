@@ -23,7 +23,6 @@ input UserUpdateInput {
 
 type JsonWebToken{
   token: String!
-  expireAt: String!
 }
 
 

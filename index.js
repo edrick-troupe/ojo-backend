@@ -64,7 +64,6 @@ const { url } = await startStandaloneServer(server, {
         ojoDB: new ojoDB({ knexConfig, cache }),
         weather: new Weather({ cache }),
       },
-      ip: req.ip,
       newUser: await authenticate.getUser(req),
     };
   },

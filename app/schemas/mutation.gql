@@ -16,7 +16,6 @@ type Mutation {
   updateGame(id: Int!, input: GameUpdateInput!): Game
   deleteGame(id: Int!): Boolean!
 
-
   registerUser(input: UserRegisterInput!): User
   updateUser(input: UserUpdateInput!): User
   
