@@ -1,0 +1,15 @@
+type BookEvent {
+  id: Int!
+  user_id: Int!
+  event_id: Int!
+}
+
+input BookEventAddInput {
+  user_id: Int!
+  event_id: Int!
+}
+
+input BookEventUpdateInput {
+  user_id: Int
+  event_id: Int
+}

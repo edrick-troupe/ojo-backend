@@ -80,5 +80,20 @@ export default {
     return result;
   },
 
+  
+  async addBookEvent(_, { input }, { dataSources }) {
+    const bookevent = await dataSources.ojoDB.bookEventDatamapper.create(input);
+    return bookevent;
+  },
+
+  async updateBookEvent(_, { id, input }, { dataSources }) {
+    const bookevent = await dataSources.ojoDB.bookEventDatamapper.update(id, input);
+    return bookevent;
+  },
+
+  async deleteBookEvent(_, { id }, { dataSources }) {
+    const result = await dataSources.ojoDB.bookEventDatamapper.delete(id);
+    return result;
+  },
 };
 

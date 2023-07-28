@@ -25,7 +25,7 @@ input EventAddInput {
   site_id: Int!
 }
 
-# We define two diffrents input because we allow a partial update (each data is not required)
+# We define two differents input because we allow a partial update (each data is not required)
 input EventUpdateInput {
   day: String
   description: String

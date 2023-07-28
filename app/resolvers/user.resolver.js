@@ -6,7 +6,7 @@ export default {
     .eventDatamapper
     .findByUser(userId);
     return events;
-  },
+  }
 
 };
 

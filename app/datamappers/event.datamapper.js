@@ -64,3 +64,4 @@ class Event extends CoreDatamapper {
 
 
 export default Event;
+

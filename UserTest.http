@@ -82,13 +82,13 @@ mutation Delete {
   deleteUser
 }
 
-### Collection of User info JOINED with list of events booked
+### Collection of list of events booked by user
 POST http://localhost:3000/
 Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzMsImVtYWlsIjoic29meWFublRlc3RGYXZvcml0ZUBvY2xvY2suaW8iLCJmaXJzdG5hbWUiOiJTb2Z5YW5uIiwibGFzdG5hbWUiOiJMZSBTIiwiaWF0IjoxNjkwNTM0MjUwLCJleHAiOjE2OTMxMjYyNTB9.Ds7CTe3QTHWQ7x-RgKceYtM6GUGjfbjAnEPFhmqRmkY
 
-query Query {
+query User {
   user {
     id
     email
@@ -96,13 +96,45 @@ query Query {
     lastname
     events {
       id
+      day
+      description
+      slot
     }
   }
 }
 
-### Update of User info JOINED with list of events booked
+### Query to book an event 
 POST http://localhost:3000/
 Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzMsImVtYWlsIjoic29meWFublRlc3RGYXZvcml0ZUBvY2xvY2suaW8iLCJmaXJzdG5hbWUiOiJTb2Z5YW5uIiwibGFzdG5hbWUiOiJMZSBTIiwiaWF0IjoxNjkwNTM0MjUwLCJleHAiOjE2OTMxMjYyNTB9.Ds7CTe3QTHWQ7x-RgKceYtM6GUGjfbjAnEPFhmqRmkY
+
+mutation AddBookEvent($input: BookEventAddInput!) {
+  addBookEvent(input: $input) {
+    id
+    user_id
+    event_id
+  }
+}
+
+{
+  "input": {
+    "event_id": 6,
+    "user_id": 27
+  }
+}
+
+### Query to delete booking of an event 
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzMsImVtYWlsIjoic29meWFublRlc3RGYXZvcml0ZUBvY2xvY2suaW8iLCJmaXJzdG5hbWUiOiJTb2Z5YW5uIiwibGFzdG5hbWUiOiJMZSBTIiwiaWF0IjoxNjkwNTM0MjUwLCJleHAiOjE2OTMxMjYyNTB9.Ds7CTe3QTHWQ7x-RgKceYtM6GUGjfbjAnEPFhmqRmkY
+
+mutation DeleteBookEvent($deleteBookEventId: Int!) {
+  deleteBookEvent(id: $deleteBookEventId)
+}
+
+{
+  "deleteBookEventId": 6
+}
 

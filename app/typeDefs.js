@@ -18,6 +18,7 @@ const schemas = [
   'game',
   'site',
   'weather',
+  'event_has_user',
 ].map(
   (file) => fs.readFileSync(path.resolve(`${dirname}./schemas/${file}.gql`)),
 );
@@ -29,3 +30,5 @@ ${schemas.join(EOL)}
 `;
 // EOL is an equivalent of "\n" (New Line) on Mac and Linux and 
 // to "\r\n" (Return line + New line) on windows
+
+

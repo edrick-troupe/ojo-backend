@@ -19,6 +19,10 @@ type Mutation {
   registerUser(input: UserRegisterInput!): User
   updateUser(input: UserUpdateInput!): User
   deleteUser: Boolean!
+
+  addBookEvent(input: BookEventAddInput!): BookEvent
+  updateBookEvent(id: Int!, input: BookEventUpdateInput!): BookEvent
+  deleteBookEvent(id: Int!): Boolean!
   
 }
 
