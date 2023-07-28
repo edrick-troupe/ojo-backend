@@ -18,6 +18,7 @@ type Mutation {
 
   registerUser(input: UserRegisterInput!): User
   updateUser(input: UserUpdateInput!): User
+  deleteUser: Boolean!
   
 }
 

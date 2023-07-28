@@ -1,10 +1,10 @@
 export default {
 
-  async events({ id: userId }, _, { dataSources }) {
+  async events({id: userId}, _, { dataSources }) {
     const events = dataSources
     .ojoDB
     .eventDatamapper
-    .findByuser(userId);
+    .findByUser(userId);
     return events;
   },
 

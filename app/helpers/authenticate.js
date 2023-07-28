@@ -16,9 +16,7 @@ export default {
         'eyJhbGciOiJIUzI1N'
       ]
       */
-      console.log(bearer)
       const [, token] = bearer.split(' ');
-      console.log(token)
       const newUser = await jwt.verify(token, process.env.JSON_WEB_TOKEN_PRIVATE_KEY);
       if (!newUser) {
         return null;
@@ -31,7 +29,6 @@ export default {
         lastname: 'Dupont,
       },
       */
-      console.log(newUser)
       return newUser;
       
     } catch (err) {

@@ -17,7 +17,8 @@ class User extends CoreDatamapper {
   }
 
   async register(inputData) {
-    /*const [user] = await dataSources.ojoDB.userDatamapper.findAll({ where: { email } });
+    /*
+    const [user] = await dataSources.ojoDB.userDatamapper.findAll({ where: { email } });
     if (user.email == inputData.email) {
       throw new GraphQLError('Mail already registered', {
         extensions: {

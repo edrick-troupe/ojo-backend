@@ -51,7 +51,7 @@ export default {
   },
 
   // For login function, verify if the user email already exists in DB
-  async login(_, { email, password }, { dataSources, ip }) {
+  async login(_, { email, password }, { dataSources }) {
     
     const [user] = await dataSources.ojoDB.userDatamapper.findAll({ where: { email } });
     if (!user) {
@@ -102,11 +102,10 @@ export default {
     const user = await dataSources.ojoDB.userDatamapper.findByPk(newUser.id);
     return user;
   },
-/*
-  async logout (req){
-    const bearer = req.headers.authorization
-    delete bearer
-  },
+  
 }
-*/
-}
+
+
+
+
+

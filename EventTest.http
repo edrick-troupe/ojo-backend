@@ -1,0 +1,114 @@
+### Collection of events list
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query Events {
+  events {
+    id
+    day
+    description
+    slot
+  }
+}
+
+### Collection of one event
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query oneEvent ($eventId: Int!) {
+  event(id: $eventId) {
+    day
+    description
+    id
+    slot
+  }
+}
+
+{
+  "eventId": 53
+}
+
+### Creation of an event
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation AddEvent($input: EventAddInput!) {
+  addEvent(input: $input) {
+    id
+    day
+    description
+    slot
+  }
+}
+
+{
+  "input": {
+    "description": "Dummy event 1",
+    "slot": "08:00-10:00",
+    "day": "04/08/24",
+    "game_id": 3,
+    "site_id": 2
+  }
+}
+
+### Update of an event
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation UpdateEvent($updateEventId: Int!, $input: EventUpdateInput!) {
+  updateEvent(id: $updateEventId, input: $input) {
+    id
+    day
+    description
+    slot
+  }
+}
+
+{
+  "updateEventId": 54,
+  "input": {
+    "description": "update 2"
+  }
+}
+
+### Delete of an event
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation DeleteEvent($deleteEventId: Int!) {
+  deleteEvent(id: $deleteEventId)
+}
+
+{
+  "deleteEventId": 53
+}
+
+### Collection event info JOINED with list of users booked
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query UsersByEventID($eventId: Int!) {
+  event(id: $eventId) {
+    id
+    day
+    description
+    slot
+    users {
+      id
+      email
+      firstname
+      lastname
+    }
+  }
+}
+
+{
+  "eventId": 1
+}
+

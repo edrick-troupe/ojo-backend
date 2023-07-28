@@ -24,7 +24,7 @@ export default {
     const users = await dataSources
       .ojoDB
       .userDatamapper
-      .findByevent(eventId);
+      .findByEvent(eventId);
     return users;
   },
 };

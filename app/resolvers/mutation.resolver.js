@@ -57,7 +57,7 @@ export default {
   async updateUser(_, { input }, { dataSources, newUser }) {
     
     if (!newUser) {
-      throw new GraphQLError("Access denied: Please register before login", {
+      throw new GraphQLError("Access denied: Please login before update", {
         extensions: {
           code: 'FORBIDDEN',
         },
@@ -67,6 +67,18 @@ export default {
     return user;
   },
 
-};
+  async deleteUser(_, __, { dataSources, newUser }) {
+    
+    if (!newUser) {
+      throw new GraphQLError("Access denied: Please login before delete ", {
+        extensions: {
+          code: 'FORBIDDEN',
+        },
+      });
+    }
+    const result = await dataSources.ojoDB.userDatamapper.delete(newUser.id);
+    return result;
+  },
 
+};
 

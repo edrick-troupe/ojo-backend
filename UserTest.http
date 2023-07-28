@@ -1,0 +1,108 @@
+### Register
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+mutation RegisterUser($input: UserRegisterInput!) {
+  registerUser(input: $input) {
+    email
+    firstname
+  }
+}
+
+{
+  "input": {
+    "email": "sofyannTestFavorite@oclock.io",
+    "password": "superpass",
+    "firstname": "Sofyann",
+    "lastname": "Le S"
+  }
+}
+
+### Login
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query ($email: String!, $password: String!){
+  login(email: $email, password: $password){
+    token
+  }
+}
+
+{
+  "email": "sofyannTestFavorite@oclock.io",
+  "password": "superpass"
+}
+
+### Collection of User info
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzMsImVtYWlsIjoic29meWFublRlc3RGYXZvcml0ZUBvY2xvY2suaW8iLCJmaXJzdG5hbWUiOiJTb2Z5YW5uIiwibGFzdG5hbWUiOiJMZSBTIiwiaWF0IjoxNjkwNTM0MjUwLCJleHAiOjE2OTMxMjYyNTB9.Ds7CTe3QTHWQ7x-RgKceYtM6GUGjfbjAnEPFhmqRmkY
+
+query {
+  user {
+    id
+    email
+    firstname
+    lastname
+  }
+}
+
+### Update of a User info
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzMsImVtYWlsIjoic29meWFublRlc3RGYXZvcml0ZUBvY2xvY2suaW8iLCJmaXJzdG5hbWUiOiJTb2Z5YW5uIiwibGFzdG5hbWUiOiJMZSBTIiwiaWF0IjoxNjkwNTM0MjUwLCJleHAiOjE2OTMxMjYyNTB9.Ds7CTe3QTHWQ7x-RgKceYtM6GUGjfbjAnEPFhmqRmkY
+
+mutation UpdateUser($input: UserUpdateInput!) {
+  updateUser(input: $input) {
+    id
+    email
+    password
+    firstname
+    lastname
+  }
+}
+
+{
+  "input": {
+    "lastname": "Another S"
+  }
+}
+
+### Delete of User
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzMsImVtYWlsIjoic29meWFublRlc3RGYXZvcml0ZUBvY2xvY2suaW8iLCJmaXJzdG5hbWUiOiJTb2Z5YW5uIiwibGFzdG5hbWUiOiJMZSBTIiwiaWF0IjoxNjkwNTM0MjUwLCJleHAiOjE2OTMxMjYyNTB9.Ds7CTe3QTHWQ7x-RgKceYtM6GUGjfbjAnEPFhmqRmkY
+
+mutation Delete {
+  deleteUser
+}
+
+### Collection of User info JOINED with list of events booked
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzMsImVtYWlsIjoic29meWFublRlc3RGYXZvcml0ZUBvY2xvY2suaW8iLCJmaXJzdG5hbWUiOiJTb2Z5YW5uIiwibGFzdG5hbWUiOiJMZSBTIiwiaWF0IjoxNjkwNTM0MjUwLCJleHAiOjE2OTMxMjYyNTB9.Ds7CTe3QTHWQ7x-RgKceYtM6GUGjfbjAnEPFhmqRmkY
+
+query Query {
+  user {
+    id
+    email
+    firstname
+    lastname
+    events {
+      id
+    }
+  }
+}
+
+### Update of User info JOINED with list of events booked
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MzMsImVtYWlsIjoic29meWFublRlc3RGYXZvcml0ZUBvY2xvY2suaW8iLCJmaXJzdG5hbWUiOiJTb2Z5YW5uIiwibGFzdG5hbWUiOiJMZSBTIiwiaWF0IjoxNjkwNTM0MjUwLCJleHAiOjE2OTMxMjYyNTB9.Ds7CTe3QTHWQ7x-RgKceYtM6GUGjfbjAnEPFhmqRmkY
+
