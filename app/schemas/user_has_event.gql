@@ -1,0 +1,20 @@
+type user_has_event {
+  favorite: Boolean
+  comment: String
+  event: Event
+}
+
+input user_has_eventAddInput {
+  favorite: Boolean
+  comment: String
+  user_id: Int!
+  event_id: Int!
+}
+
+input user_has_eventUpdateInput {
+  favorite: Boolean
+  comment: String
+  user_id: Int!
+  event_id: Int!
+}
+

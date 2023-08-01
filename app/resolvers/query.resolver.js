@@ -103,6 +103,17 @@ export default {
     return user;
   },
   
+  async bookevents(_, __, { dataSources, newUser }) {
+    if (!newUser) {
+      throw new GraphQLError("Access denied: Please register before login", {
+        extensions: {
+          code: 'FORBIDDEN',
+        },
+      });
+    }
+    const bookevents = await dataSources.ojoDB.bookEventDatamapper.findAll({ where: { user_id: newUser.id} });
+    return bookevents;
+  }
 }
 
 

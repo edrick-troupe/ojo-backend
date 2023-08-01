@@ -21,6 +21,7 @@ type Mutation {
   deleteUser: Boolean!
 
   addBookEvent(input: BookEventAddInput!): BookEvent
+  updateBookEvent(input: BookEventUpdateInput!): BookEvent
   deleteBookEvent(id: Int!): Boolean!
   
 }

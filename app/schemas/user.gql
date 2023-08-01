@@ -4,7 +4,7 @@ type User {
   password: String!
   firstname: String
   lastname: String
-  events: [Event]
+  user_has_events: [user_has_event]
 }
 
 input UserRegisterInput {

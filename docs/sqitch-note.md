@@ -26,7 +26,15 @@ sqitch verify develop
 ```
 psql -d ojo -f data/seeding-sample.sql
 ```
-### Structure mod "NewColumn"
+###  Mod "NewColumn favorite"
 ```
 sqitch add favorite -n 'NewColumn'
+```
+###  Mod "NewColumn comment"
+```
+sqitch add comment -n 'New Column comment'
+```
+###  Mod "Rename table event_has_user"
+```
+sqitch add tablename -n 'New Table Name'
 ```
