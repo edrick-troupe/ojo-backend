@@ -84,11 +84,6 @@ export default {
     const bookevent = await dataSources.ojoDB.bookEventDatamapper.create(input);
     return bookevent;
   },
-  // To be deleted: Not relevent
-  async updateBookEvent(_, { id, input }, { dataSources }) {
-    const bookevent = await dataSources.ojoDB.bookEventDatamapper.update(id, input);
-    return bookevent;
-  },
 
   async deleteBookEvent(_, { id }, { dataSources }) {
     const result = await dataSources.ojoDB.bookEventDatamapper.delete(id);
