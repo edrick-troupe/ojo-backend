@@ -22,9 +22,7 @@ type Query {
   user: User
   login(email: String!, password: String!): JsonWebToken
 
-  bookevents: [BookEvent]
-  bookevent: BookEvent
-
+ 
 }
 
 
