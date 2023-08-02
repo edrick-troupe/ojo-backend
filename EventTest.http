@@ -27,7 +27,7 @@ query oneEvent ($eventId: Int!) {
 }
 
 {
-  "eventId": 53
+  "eventId": 1
 }
 
 ### Creation of an event
@@ -69,9 +69,9 @@ mutation UpdateEvent($updateEventId: Int!, $input: EventUpdateInput!) {
 }
 
 {
-  "updateEventId": 54,
+  "updateEventId": 1,
   "input": {
-    "description": "update 2"
+    "description": "update test of description"
   }
 }
 
@@ -85,7 +85,7 @@ mutation DeleteEvent($deleteEventId: Int!) {
 }
 
 {
-  "deleteEventId": 53
+  "deleteEventId": 41
 }
 
 ### Collection event info JOINED with list of users booked

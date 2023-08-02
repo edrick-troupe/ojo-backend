@@ -48,18 +48,19 @@ class Event extends CoreDatamapper {
       .cache(process.env.SQL_CACHE_TTL);
     return rows;
   }
-
+/*
   async findByUser(userId) {
     const rows = await this.db.query
       .from(this.tableName)
       .join(
-        'user_has_event',
-        'user_has_event.event_id',
+        'favorite',
+        'favorite.event_id',
         'event.id',
       ).where({ user_id: userId })
       .cache(process.env.SQL_CACHE_TTL);
     return rows;
   }
+*/
 }
 
 

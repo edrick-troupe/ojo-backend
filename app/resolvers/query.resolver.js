@@ -103,7 +103,21 @@ export default {
     return user;
   },
   
+  
+  async favorites (_, __, { dataSources, newUser }) {
+    if (!newUser) {
+      throw new GraphQLError("Access denied: Please register before login", {
+        extensions: {
+          code: 'FORBIDDEN',
+        },
+      });
+    }
+    const favorites = await dataSources.ojoDB.favoriteDatamapper.findAll({ where: { user_id: newUser.id} });
+    return favorites;
+  }
+  
 }
+
 
 
 

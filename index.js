@@ -29,6 +29,15 @@ import debug from 'debug';
 import './app/helpers/env.loader.js';
 import authenticate from './app/helpers/authenticate.js';
 import Weather from './app/datasources/weather.datasource.js';
+import cors from 'cors'
+import express from 'express';
+
+const app = express();
+
+app.use(
+  '/graphql',
+  cors({ origin: ['http://localhost:5173/'] }),
+);
 
 // For this Api we will use knex as a query builder,
 // providing a batch/cache support.

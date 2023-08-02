@@ -1,0 +1,105 @@
+### Collection of list of events booked by user
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsImVtYWlsIjoiU29meWFubkFnYWluQG9jbG9jay5jb20iLCJmaXJzdG5hbWUiOiJMZSBTIiwibGFzdG5hbWUiOiJIZWxwZXIiLCJpYXQiOjE2OTA1NTIwMDAsImV4cCI6MTY5MzE0NDAwMH0.ebs8RoYHO6SYJqplZ0XKMjMqamnkuM1kKoP7YAN5YfI
+
+query FavoriteEvents {
+  favorites {
+    id
+    favorite
+    comment
+    event {
+      id
+      day
+      description
+      slot
+    }
+  }
+}
+
+### Collection of list of events booked by user AND user info
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsImVtYWlsIjoiU29meWFubkFnYWluQG9jbG9jay5jb20iLCJmaXJzdG5hbWUiOiJMZSBTIiwibGFzdG5hbWUiOiJIZWxwZXIiLCJpYXQiOjE2OTA1NTIwMDAsImV4cCI6MTY5MzE0NDAwMH0.ebs8RoYHO6SYJqplZ0XKMjMqamnkuM1kKoP7YAN5YfI
+
+query UserAndFavoriteEvents {
+  user {
+    id
+    email
+    firstname
+    lastname
+    favorites {
+      id
+      favorite
+      comment
+      event {
+        id
+        day
+        description
+        slot
+      }
+    }
+  }
+}
+
+### Query to add a favorite 
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsImVtYWlsIjoiU29meWFubkFnYWluQG9jbG9jay5jb20iLCJmaXJzdG5hbWUiOiJMZSBTIiwibGFzdG5hbWUiOiJIZWxwZXIiLCJpYXQiOjE2OTA1NTIwMDAsImV4cCI6MTY5MzE0NDAwMH0.ebs8RoYHO6SYJqplZ0XKMjMqamnkuM1kKoP7YAN5YfI
+
+mutation AddFavorite($input: FavoriteAddInput!) {
+  addFavorite(input: $input) {
+    id
+    favorite
+    comment
+  }
+}
+
+{
+  "input": {
+    "event_id": 8,
+    "user_id": 27
+  }
+}
+
+### Query to update a favorite 
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsImVtYWlsIjoiU29meWFubkFnYWluQG9jbG9jay5jb20iLCJmaXJzdG5hbWUiOiJMZSBTIiwibGFzdG5hbWUiOiJIZWxwZXIiLCJpYXQiOjE2OTA1NTIwMDAsImV4cCI6MTY5MzE0NDAwMH0.ebs8RoYHO6SYJqplZ0XKMjMqamnkuM1kKoP7YAN5YfI
+
+mutation UpdateFavorite($input: FavoriteUpdateInput!) {
+  updateFavorite(input: $input) {
+    id
+    favorite
+    comment
+  }
+}
+
+{
+  "input": {
+    "user_id": 27,
+    "event_id": 8,
+    "comment": "Test"
+  }
+}
+
+### Query to delete a favorite 
+POST http://localhost:3000/
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjcsImVtYWlsIjoiU29meWFubkFnYWluQG9jbG9jay5jb20iLCJmaXJzdG5hbWUiOiJMZSBTIiwibGFzdG5hbWUiOiJIZWxwZXIiLCJpYXQiOjE2OTA1NTIwMDAsImV4cCI6MTY5MzE0NDAwMH0.ebs8RoYHO6SYJqplZ0XKMjMqamnkuM1kKoP7YAN5YfI
+
+mutation DeleteFavorite($input: FavoriteDeleteInput!) {
+  deleteFavorite(input: $input)
+}
+
+{
+  "input": {
+    "event_id": 7
+  }
+}
+

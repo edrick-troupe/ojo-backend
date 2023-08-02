@@ -8,8 +8,8 @@ class User extends CoreDatamapper {
     const rows = await this.db.query
       .from(this.tableName)
       .join(
-        'user_has_event',
-        'user_has_event.user_id',
+        'favorite',
+        'favorite.user_id',
         'user.id',
       ).where({ event_id: eventId })
       .cache(process.env.SQL_CACHE_TTL);

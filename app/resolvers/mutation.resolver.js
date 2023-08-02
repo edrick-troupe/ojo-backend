@@ -79,14 +79,22 @@ export default {
     const result = await dataSources.ojoDB.userDatamapper.delete(newUser.id);
     return result;
   },
-
-  async addBookEvent(_, { input }, { dataSources }) {
-    const bookevent = await dataSources.ojoDB.bookEventDatamapper.create(input);
-    return bookevent;
+  
+  async addFavorite (_,{ input }, { dataSources, newUser }) {
+    console.log('+++Add++++', newUser.id, input )
+    const favorite = await dataSources.ojoDB.favoriteDatamapper.create(newUser.id, input);
+    return favorite;
   },
 
-  async deleteBookEvent(_, { id }, { dataSources }) {
-    const result = await dataSources.ojoDB.bookEventDatamapper.delete(id);
+  async updateFavorite(_, { input }, { dataSources, newUser }) {
+    console.log('+++Update++++', newUser.id, input.event_id )
+    const favorite = await dataSources.ojoDB.favoriteDatamapper.update(newUser.id, input.event_id, input);
+    return favorite;
+  },
+
+  async deleteFavorite(_,{ input }, { dataSources, newUser }) {
+    console.log('+++Delete++++', newUser.id, input.event_id)
+    const result = await dataSources.ojoDB.favoriteDatamapper.delete(newUser.id, input.event_id);
     return result;
   },
 };

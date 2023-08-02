@@ -1,0 +1,25 @@
+type Favorite {
+  id: Int!
+  favorite: Boolean!
+  comment: String
+  event: Event
+}
+
+input FavoriteAddInput {
+  favorite: Boolean
+  comment: String
+  event_id: Int!
+  user_id: Int!
+}
+
+input FavoriteUpdateInput {
+  favorite: Boolean
+  comment: String
+  event_id: Int
+  user_id: Int
+}
+
+input FavoriteDeleteInput {
+  event_id: Int!
+}
+

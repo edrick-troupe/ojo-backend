@@ -21,7 +21,9 @@ type Query {
 
   user: User
   login(email: String!, password: String!): JsonWebToken
- 
+
+  favorites: [Favorite]
+  favorite: Favorite
 }
 
 

@@ -1,12 +1,11 @@
 export default {
 
-  async events({id: userId}, _, { dataSources }) {
-    const events = dataSources
+  async favorites({id: userId}, _, { dataSources }) {
+    const favorites = dataSources
     .ojoDB
-    .eventDatamapper
+    .favoriteDatamapper
     .findByUser(userId);
-    return events;
+    return favorites;
   }
-
 };
 
