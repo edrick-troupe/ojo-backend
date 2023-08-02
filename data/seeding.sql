@@ -1,4 +1,101 @@
--- Insert data into the "Event" table
+-- Seeding OJO
+
+BEGIN;
+
+
+INSERT INTO "site" ("name", "slug", "city", "picture", "description", "latitude", "longitude")
+VALUES 
+    ('Eiffel Tower Stadium', 'eiffel-tower-stadium', 'Paris', 'eiffel_tower_stadium.jpg', 'A world-famous stadium located at the Eiffel Tower.', 48.858844, 2.294351),
+    ('Champs-de-Mars Arena', 'champs-de-mars-arena', 'Paris', 'champs_de_mars_arena.jpg', 'An arena situated near the Champs-de-Mars park.', 48.856578, 2.298426),
+    ('Grand Palais', 'grand-palais', 'Paris', 'grand_palais.jpg', 'A historic venue known for hosting grand events.', 48.866071, 2.312777),
+    ('Invalides', 'invalides', 'Paris', 'invalides.jpg', 'A multipurpose venue with a rich historical background.', 48.856728, 2.312634),
+    ('Invalides (Start venue) - Pont Alexandre III (Finish venue)', 'invalides-start-pont-alexandre-iii-finish', 'Paris', 'invalides_pont_alexandre_iii.jpg', 'An iconic route starting from Invalides and finishing at Pont Alexandre III.', 48.856728, 2.312634),
+    ('Hôtel de Ville (Start venue) - Invalides (Finish venue)', 'hotel-de-ville-start-invalides-finish', 'Paris', 'hotel_de_ville_invalides.jpg', 'A route that begins at Hôtel de Ville and concludes at Invalides.', 48.856613, 2.352222),
+    ('Pont Alexandre III', 'pont-alexandre-iii', 'Paris', 'pont_alexandre_iii.jpg', 'A famous bridge serving as a venue for various events.', 48.863885, 2.313043),
+    ('Trocadéro', 'trocadero', 'Paris', 'trocadero.jpg', 'A scenic location with a stunning view of the Eiffel Tower.', 48.862683, 2.287154),
+    ('La Concorde', 'la-concorde', 'Paris', 'la_concorde.jpg', 'One of the sites at Place de la Concorde for sports events.', 48.865496, 2.321774),
+    ('Roland-Garros Stadium - P. Chatrier', 'roland-garros-stadium-p-chatrier', 'Paris', 'roland_garros_stadium_p_chatrier.jpg', 'Famous tennis stadium with a focus on Philippe Chatrier court.', 48.846232, 2.248604),
+    ('Roland-Garros Stadium - S. Lenglen', 'roland-garros-stadium-s-lenglen', 'Paris', 'roland_garros_stadium_s_lenglen.jpg', 'Famous tennis stadium with a focus on Suzanne Lenglen court.', 48.846498, 2.250573),
+    ('Roland-Garros Stadium - S. Matthieu', 'roland-garros-stadium-s-matthieu', 'Paris', 'roland_garros_stadium_s_matthieu.jpg', 'Famous tennis stadium with a focus on Simonne-Mathieu court.', 48.843014, 2.247393),
+    ('Outside courts', 'outside-courts', 'Paris', 'outside_courts.jpg', 'Numerous outdoor courts for tennis and other outdoor sports.', 48.843014, 2.247393),
+    ('Paris Arena', 'paris-arena', 'Paris', 'paris_arena.jpg', 'An indoor arena for sports and entertainment events.', 48.833959, 2.346480),
+    ('Porte de La Chapelle Arena', 'porte-de-la-chapelle-arena', 'Paris', 'porte_de_la_chapelle_arena.jpg', 'An arena located near Porte de La Chapelle.', 48.895175, 2.359013),
+    ('Paris La Defense Arena', 'paris-la-defense-arena', 'Nanterre', 'paris_la_defense_arena.jpg', 'A large arena in the business district of La Defense.', 48.893256, 2.234838),
+    ('Aquatics Centre', 'aquatics-centre', 'Paris', 'aquatics_centre.jpg', 'A state-of-the-art aquatics center for swimming and diving events.', 48.835314, 2.253391),
+    ('Stade de France', 'stade-de-france', 'Saint-Denis', 'stade_de_france.jpg', 'A legendary stadium with a capacity for large events.', 48.921537, 2.360554),
+    ('Le Bourget Sport Climbing Venue', 'le-bourget-sport-climbing-venue', 'Le Bourget', 'le_bourget_sport_climbing_venue.jpg', 'A venue designed for sport climbing competitions.', 48.937175, 2.430755),
+    ('North Paris Arena*', 'north-paris-arena', 'Paris', 'north_paris_arena.jpg', 'An indoor arena for sports and entertainment events.', 48.894636, 2.380328),
+    ('Saint-Quentin-en-Yvelines BMX Stadium', 'saint-quentin-en-yvelines-bmx-stadium', 'Saint-Quentin-en-Yvelines', 'saint_quentin_en_yvelines_bmx_stadium.jpg', 'A BMX stadium for thrilling BMX racing events.', 48.769264, 2.048112),
+    ('Elancourt Hill', 'elancourt-hill', 'Elancourt', 'elancourt_hill.jpg', 'A hilly area used for various outdoor sports and activities.', 48.786978, 1.966251),
+    ('Le Golf National', 'le-golf-national', 'Guyancourt', 'le_golf_national.jpg', 'A world-renowned golf course designed for professional tournaments.', 48.742095, 2.077801),
+    ('Saint-Quentin-en-Yvelines Velodrome', 'saint-quentin-en-yvelines-velodrome', 'Saint-Quentin-en-Yvelines', 'saint_quentin_en_yvelines_velodrome.jpg', 'A cycling velodrome for thrilling track cycling competitions.', 48.770139, 2.043973),
+    ('Château de Versailles', 'chateau-de-versailles', 'Versailles', 'chateau_de_versailles.jpg', 'The iconic Versailles Palace, occasionally used for special events.', 48.804864, 2.120355),
+    ('Vaires-sur-Marne Nautical Stadium', 'vaires-sur-marne-nautical-stadium', 'Vaires-sur-Marne', 'vaires_sur_marne_nautical_stadium.jpg', 'A nautical stadium with flatwater courses for canoe and kayak events.', 48.874036, 2.639644),
+    ('Yves-du-Manoir Stadium', 'yves-du-manoir-stadium', 'Colombes', 'yves_du_manoir_stadium.jpg', 'A historic stadium known for its rugby and football matches.', 48.922616, 2.248913),
+    ('Pierre Mauroy Stadium', 'pierre-mauroy-stadium', 'Lille', 'pierre_mauroy_stadium.jpg', 'A modern stadium equipped to host various sporting events.', 50.629700, 3.136691),
+    ('Châteauroux Shooting Centre', 'chateauroux-shooting-centre', 'Châteauroux', 'chateauroux_shooting_centre.jpg', 'A specialized venue designed for shooting competitions.', 46.896256, 1.688356),
+    ('Marseille Marina', 'marseille-marina', 'Marseille', 'marseille_marina.jpg', 'A scenic marina area occasionally used for water sports events.', 43.292104, 5.354198),
+    ('Teahupo''o, Tahiti', 'teahupoo-tahiti', 'Tahiti', 'teahupoo_tahiti.jpg', 'A legendary surfing location known for its massive waves.', -17.848309, -149.265744),
+    ('Parc des Princes', 'parc-des-princes', 'Paris', 'parc_des_princes.jpg', 'The home stadium of a famous football club.', 48.841896, 2.253525),
+    ('La Beaujoire Stadium', 'la-beaujoire-stadium', 'Nantes', 'la_beaujoire_stadium.jpg', 'A stadium known for hosting football and rugby events.', 47.248904, -1.526128),
+    ('Bordeaux Stadium', 'bordeaux-stadium', 'Bordeaux', 'bordeaux_stadium.jpg', 'A modern stadium located in Bordeaux for various events.', 44.832968, -0.556907),
+    ('Lyon Stadium', 'lyon-stadium', 'Lyon', 'lyon_stadium.jpg', 'A famous stadium in Lyon, often used for football and rugby.', 45.754986, 4.950724),
+    ('Geoffroy-Guichard Stadium', 'geoffroy-guichard-stadium', 'Saint-Étienne', 'geoffroy_guichard_stadium.jpg', 'A stadium known for its passionate football atmosphere.', 45.460152, 4.390512),
+    ('Marseille Stadium', 'marseille-stadium', 'Marseille', 'marseille_stadium.jpg', 'A stadium in Marseille hosting football and rugby events.', 43.269669, 5.395120),
+    ('Nice Stadium', 'nice-stadium', 'Nice', 'nice_stadium.jpg', 'A modern stadium located in Nice, used for various events.', 43.703199, 7.267946);
+
+INSERT INTO "game" ("label", "slug", "picture", "logo", "description", "favorite", "paralympic", "tag") 
+VALUES
+    ('Beach Volleyball', 'beach-volleyball', 'beach_volleyball.jpg', 'beach_volleyball_logo.jpg', 'A team sport played on sand with two teams of two players each.', true, false, 'Outdoor'),
+    ('Judo', 'judo', 'judo.jpg', 'judo_logo.jpg', 'A martial art and Olympic sport focusing on throws and grappling.', true, false, 'Indoor'),
+    ('Wrestling', 'wrestling', 'wrestling.jpg', 'wrestling_logo.jpg', 'A combat sport involving grappling techniques.', false, false, 'Indoor'),
+    ('Fencing', 'fencing', 'fencing.jpg', 'fencing_logo.jpg', 'A sport of sword fighting with different weapons.', true, false, 'Indoor'),
+    ('Taekwondo', 'taekwondo', 'taekwondo.jpg', 'taekwondo_logo.jpg', 'A Korean martial art known for its emphasis on high kicks.', true, false, 'Indoor'),
+    ('Archery', 'archery', 'archery.jpg', 'archery_logo.jpg', 'A sport of shooting arrows with a bow at a target.', true, false, 'Outdoor'),
+    ('Cycling Road - Individual Time Trial', 'cycling-road-individual-time-trial', 'cycling_road_individual_time_trial.jpg', 'cycling_road_individual_time_trial_logo.jpg', 'A road cycling event where cyclists race against the clock.', true, false, 'Outdoor'),
+    ('Athletics (marathon)', 'athletics-marathon', 'athletics_marathon.jpg', 'athletics_marathon_logo.jpg', 'A long-distance running race over 42.195 kilometers.', true, false, 'Outdoor'),
+    ('Triathlon', 'triathlon', 'triathlon.jpg', 'triathlon_logo.jpg', 'A multisport race consisting of swimming, cycling, and running.', true, false, 'Outdoor'),
+    ('Marathon Swimming', 'marathon-swimming', 'marathon_swimming.jpg', 'marathon_swimming_logo.jpg', 'A long-distance open water swimming race.', true, false, 'Outdoor'),
+    ('Athletics (race walk)', 'athletics-race-walk', 'athletics_race_walk.jpg', 'athletics_race_walk_logo.jpg', 'A race walking event where participants must maintain contact with the ground at all times.', true, false, 'Outdoor'),
+    ('Cycling road - Road Race', 'cycling-road-road-race', 'cycling_road_road_race.jpg', 'cycling_road_road_race_logo.jpg', 'A road cycling race where multiple cyclists compete together.', true, false, 'Outdoor'),
+    ('3x3 Basketball', '3x3-basketball', '3x3_basketball.jpg', '3x3_basketball_logo.jpg', 'A variation of basketball played with three players on each team.', true, false, 'Outdoor'),
+    ('Breaking', 'breaking', 'breaking.jpg', 'breaking_logo.jpg', 'A competitive style of breakdancing.', true, false, 'Indoor'),
+    ('BMX freestyle', 'bmx-freestyle', 'bmx_freestyle.jpg', 'bmx_freestyle_logo.jpg', 'A freestyle BMX riding competition.', true, false, 'Outdoor'),
+    ('Skateboarding - Street', 'skateboarding-street', 'skateboarding_street.jpg', 'skateboarding_street_logo.jpg', 'A street skateboarding competition that includes tricks and maneuvers.', true, false, 'Outdoor'),
+    ('Skateboarding - Park', 'skateboarding-park', 'skateboarding_park.jpg', 'skateboarding_park_logo.jpg', 'A skateboarding competition held in a skate park with ramps and bowls.', true, true, 'Outdoor'),
+    ('Tennis', 'tennis', 'tennis.jpg', 'tennis_logo.jpg', 'A racket sport played on a rectangular court with a net.', true, false, 'Outdoor'),
+    ('Boxing', 'boxing', 'boxing.jpg', 'boxinglogo.jpg', 'A combat sport where participants throw punches at each other.', true, false, 'Indoor'),
+    ('Volleyball', 'volleyball', 'volleyball.jpg', 'volleyball_logo.jpg', 'A team sport played with a ball and a net.', true, false, 'Indoor'),
+    ('Table Tennis', 'table-tennis', 'table_tennis.jpg', 'table_tennis_logo.jpg', 'A sport where players hit a lightweight ball back and forth across a table.', true, false, 'Indoor'),
+    ('Handball', 'handball', 'handball.jpg', 'handballlogo.jpg', 'A team sport played with a small ball and goals.', true, false, 'Indoor'),
+    ('Weightlifting', 'weightlifting', 'weightlifting.jpg', 'weightlifting_logo.jpg', 'A sport of lifting weights in a precise manner.', true, false, 'Indoor'),
+    ('Artistic Gymnastics', 'artistic-gymnastics', 'artistic_gymnastics.jpg', 'artistic_gymnastics_logo.jpg', 'A gymnastics discipline that involves performing routines on various apparatus.', true, false, 'Indoor'),
+    ('Trampoline Gymnastics', 'trampoline-gymnastics', 'trampoline_gymnastics.jpg', 'trampoline_gymnastics_logo.jpg', 'A gymnastics discipline performed on a trampoline.', true, false, 'Indoor'),
+    ('Basketball', 'basketball', 'basketball.jpg', 'basketballlogo.jpg', 'A team sport played with a ball and a hoop.', true, false, 'Indoor'),
+    ('Badminton', 'badminton', 'badminton.jpg', 'badminton_logo.jpg', 'A racket sport played with a shuttlecock.', true, false, 'Indoor'),
+    ('Rhythmic Gymnastics', 'rhythmic-gymnastics', 'rhythmic_gymnastics.jpg', 'rhythmic_gymnastics_logo.jpg', 'A gymnastics discipline that combines dance and rhythmic movements.', true, false, 'Indoor'),
+    ('Swimming', 'swimming', 'swimming.jpg', 'swimming_logo.jpg', 'A sport of swimming in pools or open water.', true, false, 'Indoor/Outdoor/Aquatic'),
+    ('Water Polo', 'water-polo', 'water_polo.jpg', 'water_polo_logo.jpg', 'A team sport played in water with a ball and goals.', true, false, 'Outdoor'),
+    ('Artistic Swimming', 'artistic-swimming', 'artistic_swimming.jpg', 'artistic_swimming_logo.jpg', 'A synchronized swimming discipline performed in water.', true, false, 'Aquatic/Indoor'),
+    ('Diving', 'diving', 'diving.jpg', 'diving_logo.jpg', 'A sport of jumping or falling into water from a platform or springboard.', true, false, 'Aquatic/Outdoor'),
+    ('Athletics', 'athletics', 'athletics.jpg', 'athletics_logo.jpg', 'A collection of track and field events.', true, false, 'Outdoor'),
+    ('Rugby Sevens', 'rugby-sevens', 'rugby_sevens.jpg', 'rugby_sevens_logo.jpg', 'A variant of rugby union with seven players on each team.', true, false, 'Outdoor'),
+    ('Sport climbing', 'sport-climbing', 'sport_climbing.jpg', 'sport_climbing_logo.jpg', 'A sport of climbing artificial rock walls.', true, true, 'Indoor/Outdoor'),
+    ('Modern Pentathlon', 'modern-pentathlon', 'modern_pentathlon.jpg', 'modern_pentathlonlogo.jpg', 'A multi-discipline sport including fencing.', true, true, 'Indoor/Outdoor'),
+    ('BMX Racing', 'bmx-racing', 'bmx_racing.jpg', 'bmx_racing_logo.jpg', 'A high-speed BMX cycling competition on a track.', true, false, 'Outdoor'),
+    ('Cycling Mountain Bike', 'cycling-mountain-bike', 'cycling_mountain_bike.jpg', 'cycling_mountain_bike_logo.jpg', 'A mountain biking race on off-road terrain.', true, false, 'Outdoor'),
+    ('Golf', 'golf', 'golf.jpg', 'golf_logo.jpg', 'A sport of hitting a ball into a series of holes on a course.', true, false, 'Outdoor'),
+    ('Cycling track', 'cycling-track', 'cycling_track.jpg', 'cycling_track_logo.jpg', 'A track cycling race in an indoor velodrome.', true, false, 'Indoor'),
+    ('Equestrian', 'equestrian', 'equestrian.jpg', 'equestrian_logo.jpg', 'A sport of horse riding and related disciplines.', true, false, 'Outdoor'),
+    ('Canoe sprint', 'canoe-sprint', 'canoe_sprint.jpg', 'canoe_sprint_logo.jpg', 'A paddling sport with canoes racing on calm water.', true, false, 'Aquatic/Outdoor'),
+    ('Rowing', 'rowing', 'rowing.jpg', 'rowing_logo.jpg', 'A sport of rowing boats on water using oars.', true, false, 'Aquatic'),
+    ('Canoe slalom', 'canoe-slalom', 'canoe_slalom.jpg', 'canoe_slalom_logo.jpg', 'A paddling sport with canoes navigating through a slalom course.', true, false, 'Aquatic/Outdoor'),
+    ('Hockey', 'hockey', 'hockey.jpg', 'hockey_logo.jpg', 'A team sport played with a ball and sticks.', true, false, 'Outdoor'),
+    ('Shooting', 'shooting', 'shooting.jpg', 'shooting_logo.jpg', 'A sport of shooting at targets with firearms.', true, false, 'Indoor/Outdoor'),
+    ('Sailing', 'sailing', 'sailing.jpg', 'sailing_logo.jpg', 'A sport of sailing boats on water.', true, false, 'Aquatic/Outdoor'),
+    ('Surfing', 'surfing', 'surfing.jpg', 'surfing_logo.jpg', 'A sport of riding waves on a surfboard.', true, false, 'Aquatic/Outdoor'),
+    ('Football', 'football', 'football.jpg', 'football_logo.jpg', 'A team sport played with a ball and feet.', true, false, 'Outdoor');
+
 INSERT INTO "event" ("day", "description", "slot", "game_id", "site_id")
 VALUES
     ('28/07/24', 'null', '09:00-13:00', 1, 1),
@@ -760,6 +857,16 @@ VALUES
     ('28/07/24', 'null', '19:00-21:00', 49, 38),
     ('30/07/24', 'null', '17:00-19:00', 49, 38),
     ('31/07/24', 'null', '21:00-23:00', 49, 38);
+
+INSERT INTO "user" ("email", "password", "firstname", "lastname", "isadmin")
+VALUES 
+    ('Gustave.Jacquet@yahoo.fr', 'lh_sIhteFrXaIHQ', 'Gustave', 'Jacquet', 'no'),
+    ('Audrey.Marie14@gmail.com', 'ol11wqZbCWro6aH', 'Audrey', 'Marie', 'no'),
+    ('Brice.Lemaire@hotmail.fr', 'LdFYLbXCRFXjZF1', 'Brice', 'Lemaire', 'no'),
+    ('arno@oclock.io', '$2b$10$h4Dh2fRGAf4YdC.Cqg1yleq41QHmG61B76THHCp03SgMEizvZlscy', 'Arnaud', 'Valentin', 'yes');
+
+
+COMMIT;
 
 
 
