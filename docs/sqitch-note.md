@@ -38,3 +38,7 @@ sqitch add comment -n 'New Column comment'
 ```
 sqitch add tablename -n 'New Table Name'
 ```
+###  Mod "Rename table Favorite"
+```
+sqitch add tablenameV2 -n 'New Table Name'
+```

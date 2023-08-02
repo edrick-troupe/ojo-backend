@@ -11,7 +11,7 @@ import Event from '../datamappers/event.datamapper.js';
 import User from '../datamappers/user.datamapper.js';
 import Game from '../datamappers/game.datamapper.js';
 import Site from '../datamappers/site.datamapper.js';
-import User_has_event from '../datamappers/userHasEvent.datamapper.js';
+import Favorite from '../datamappers/favorite.datamapper.js';
 
 /**
  * @typedef {object} Config
@@ -29,7 +29,7 @@ export default class ojoDB extends BatchedSQLDataSource {
   userDatamapper;
   gameDatamapper;
   siteDatamapper;
-  userHasEventDatamapper;
+  favoriteDatamapper;
 
   // We put the config object for the BatchedSQLDataSource module.
   constructor(config) {
@@ -43,14 +43,14 @@ export default class ojoDB extends BatchedSQLDataSource {
     this.userDatamapper = new User(this.db);
     this.gameDatamapper = new Game(this.db);
     this.siteDatamapper = new Site(this.db);
-    this.userHasEventDatamapper = new User_has_event(this.db);
+    this.favoriteDatamapper = new Favorite(this.db);
 
     // Hence, in order to activate the the collection by batch, we need to use an Init function
     this.eventDatamapper.init();
     this.userDatamapper.init();
     this.gameDatamapper.init();
     this.siteDatamapper.init();
-    this.userHasEventDatamapper.init();
+    this.favoriteDatamapper.init();
   }
 }
 

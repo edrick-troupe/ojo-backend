@@ -6,6 +6,7 @@ import Event from './event.resolver.js';
 import User from './user.resolver.js';
 import Game from './game.resolver.js';
 import Site from './site.resolver.js';
+import Favorite from './favorite.resolver.js';
 
 
 export default {
@@ -21,6 +22,8 @@ export default {
   Game,
 
   Site,
+
+  Favorite,
 
 };
 

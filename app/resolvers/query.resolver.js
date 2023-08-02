@@ -103,7 +103,8 @@ export default {
     return user;
   },
   
-  async bookevents(_, __, { dataSources, newUser }) {
+  
+  async favorites (_, __, { dataSources, newUser }) {
     if (!newUser) {
       throw new GraphQLError("Access denied: Please register before login", {
         extensions: {
@@ -111,10 +112,12 @@ export default {
         },
       });
     }
-    const bookevents = await dataSources.ojoDB.bookEventDatamapper.findAll({ where: { user_id: newUser.id} });
-    return bookevents;
+    const favorites = await dataSources.ojoDB.favoriteDatamapper.findAll({ where: { user_id: newUser.id} });
+    return favorites;
   }
+  
 }
+
 
 
 

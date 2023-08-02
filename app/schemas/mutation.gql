@@ -20,9 +20,9 @@ type Mutation {
   updateUser(input: UserUpdateInput!): User
   deleteUser: Boolean!
 
-  addBookEvent(input: BookEventAddInput!): BookEvent
-  updateBookEvent(input: BookEventUpdateInput!): BookEvent
-  deleteBookEvent(id: Int!): Boolean!
+  addFavorite(input: FavoriteAddInput!): Favorite
+  updateFavorite(input: FavoriteUpdateInput!): Favorite
+  deleteFavorite(input: FavoriteDeleteInput!): Boolean!
   
 }
 

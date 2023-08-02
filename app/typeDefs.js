@@ -18,7 +18,7 @@ const schemas = [
   'game',
   'site',
   'weather',
-  'user_has_event',
+  'favorite',
 ].map(
   (file) => fs.readFileSync(path.resolve(`${dirname}./schemas/${file}.gql`)),
 );

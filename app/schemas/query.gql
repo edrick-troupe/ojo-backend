@@ -22,8 +22,8 @@ type Query {
   user: User
   login(email: String!, password: String!): JsonWebToken
 
-  user_has_events: [User_has_events]
-  #user_has_event: User_has_events
+  favorites: [Favorite]
+  favorite: Favorite
 }
 
 
