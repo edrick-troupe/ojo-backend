@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node .",
     "dev": "DEBUG=server*,app*,knex* npx nodemon --ext js,gql",
-    "resetDB": "sqitch revert db:pg:ojo -y; sqitch deploy db:pg:ojo; psql -d ojo -f data/seeding-sample.sql"
+    "resetDB": "sqitch revert develop -y; sqitch deploy develop; psql -d ojo -f data/seeding.sql"
   },
   "author": "",
   "license": "ISC",

@@ -44,7 +44,7 @@ CREATE TABLE "game"
 (
     "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "label"	TEXT NOT NULL,
-    "slug" slug NOT NULL,
+    "slug" TEXT NOT NULL,
     "picture" TEXT NOT NULL,
     "logo" TEXT,
     "description" TEXT NOT NULL,

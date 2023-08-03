@@ -24,7 +24,7 @@ sqitch verify develop
 ```
 #### Seeding exe 
 ```
-psql -d ojo -f data/seeding-sample.sql
+psql -d ojo -f data/seeding.sql
 ```
 ###  Mod "NewColumn favorite"
 ```
